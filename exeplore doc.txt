@@ -1,0 +1,10 @@
+resolutions: Frame: 1250x700
+	timepanel- 1250x40
+	nextpanel- 1250x40
+	startlabel- 810x608
+	levelpanel-434x608
+	
+	cardpanel- 820x620
+	
+	
+	

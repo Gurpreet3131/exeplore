@@ -1,0 +1,277 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
+/**
+ *
+ * @author Dragneel
+ */
+public class eightqueenpanel extends javax.swing.JPanel implements ActionListener{
+
+    /**
+     * Creates new form eightqueenpanel
+     */
+    queenbutton checker[][]=new queenbutton[8][8];
+    Border buttonborder = new LineBorder(Color.black, 1);
+    int board[][]=new int[8][8];
+    int queencount=0;
+    public static boolean win=false;
+    void wincheck()
+    {
+        int count=0;
+        for(int i=0;i<8;i++)
+        {
+            for(int j=0;j<8;j++)
+            {
+                if(board[i][j]==1) count++;
+            }
+        }
+        if(count==8)
+        {
+            win=true;
+            JOptionPane.showMessageDialog(null,"Congratulations!!! You have solved the puzzle\nClick NEXT button to proceed to the next level");
+            startpanel.completetimelabel[startpanel.completetimeindex+1].setText(String.valueOf(startpanel.hour)+":"+String.format("%02d",startpanel.minute)+":"+String.format("%02d",startpanel.seconds));
+            startpanel.bar[startpanel.currentpanel].setIcon(new javax.swing.ImageIcon(getClass().getResource("/blacktile.jpg")));
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null,"Wrong Solution\n");
+        }
+    }
+    void crosscheck()
+    {
+        for(int i=0;i<8;i++)
+        {
+            for(int j=0;j<8;j++)
+            {
+                if(board[i][j]!=0)
+                {
+                    int flag=1;
+                    checker[i][j].setIcon(new javax.swing.ImageIcon(getClass().getResource("/queen.jpg")));
+                    board[i][j]=1;
+                    for(int k=0;k<8;k++)
+                    {
+                        for(int l=0;l<8;l++)
+                        {
+                            if(board[k][l]!=0)
+                            {
+                                if(k==i && j==l) continue;
+                                if(Math.abs(k-i)==0 || Math.abs(j-l)==0) 
+                                {
+                                    board[i][j]=2;
+                                    checker[i][j].setIcon(new javax.swing.ImageIcon(getClass().getResource("/queencross.png")));
+                                    flag=0;
+                                    //System.out.println(k+" "+l);
+                                    break;
+                                }
+                                else if(Math.abs(k-i)==Math.abs(j-l))
+                                {
+                                    board[i][j]=2;
+                                    checker[i][j].setIcon(new javax.swing.ImageIcon(getClass().getResource("/queencross.png")));
+                                    flag=0;
+                                    //System.out.println(k+" "+l);
+                                    break;
+                                }
+                            }
+                          
+                        }
+                        if(flag==0) break;
+                    }
+                }
+            }
+        }
+    }
+    void resetpuzzle()
+    {
+        queencount=0;
+        for(int i=0;i<8;i++)
+        {
+            for(int j=0;j<8;j++)
+            {
+                if(board[i][j]==1 || board[i][j]==2) 
+                {
+                    board[i][j]=0;
+                    if((i+j)%2==0)
+                    {
+                       checker[i][j].setIcon(new javax.swing.ImageIcon(getClass().getResource("/boardwhite.jpg")));
+                    }
+                    else
+                    {   
+                        checker[i][j].setIcon(new javax.swing.ImageIcon(getClass().getResource("/boardblack.jpg")));
+                    }
+                }
+            }
+        }
+    }
+    public eightqueenpanel() {
+        initComponents();
+        cellpanel.setLayout(new java.awt.GridLayout(8, 8));
+        for(int i=0;i<8;i++)
+        {
+            for(int j=0;j<8;j++)
+            {
+                checker[i][j]=new queenbutton(i,j);
+                if((i+j)%2==0)
+                {
+                    checker[i][j].setIcon(new javax.swing.ImageIcon(getClass().getResource("/boardwhite.jpg")));
+                }
+                else
+                {   
+                    checker[i][j].setIcon(new javax.swing.ImageIcon(getClass().getResource("/boardblack.jpg")));
+                }
+                checker[i][j].setBorder(buttonborder);
+                cellpanel.add(checker[i][j]);
+                checker[i][j].addActionListener(this);
+            }
+        }
+      
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        eightqueenlabel = new javax.swing.JLabel();
+        boardpanel = new javax.swing.JPanel();
+        cellpanel = new javax.swing.JPanel();
+        boardoutlineimagelabel = new javax.swing.JLabel();
+        resetbutton = new javax.swing.JButton();
+        checkbutton = new javax.swing.JButton();
+        instructionbutton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+
+        setMinimumSize(new java.awt.Dimension(820, 620));
+        setLayout(null);
+
+        eightqueenlabel.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
+        eightqueenlabel.setForeground(new java.awt.Color(0, 255, 204));
+        eightqueenlabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        eightqueenlabel.setText("EIGHT QUEENS");
+        add(eightqueenlabel);
+        eightqueenlabel.setBounds(210, 10, 500, 50);
+
+        boardpanel.setLayout(null);
+
+        cellpanel.setBackground(new java.awt.Color(153, 51, 0));
+        cellpanel.setLayout(new java.awt.GridLayout(8, 8));
+        boardpanel.add(cellpanel);
+        cellpanel.setBounds(30, 30, 440, 440);
+
+        boardoutlineimagelabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/boardoutline.jpg"))); // NOI18N
+        boardpanel.add(boardoutlineimagelabel);
+        boardoutlineimagelabel.setBounds(0, 0, 500, 500);
+
+        add(boardpanel);
+        boardpanel.setBounds(210, 70, 500, 500);
+
+        resetbutton.setBackground(new java.awt.Color(255, 255, 255));
+        resetbutton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        resetbutton.setForeground(new java.awt.Color(102, 0, 0));
+        resetbutton.setText("Reset");
+        resetbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetbuttonActionPerformed(evt);
+            }
+        });
+        add(resetbutton);
+        resetbutton.setBounds(30, 280, 150, 30);
+
+        checkbutton.setBackground(new java.awt.Color(255, 255, 255));
+        checkbutton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        checkbutton.setForeground(new java.awt.Color(102, 0, 0));
+        checkbutton.setText("Check");
+        checkbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkbuttonActionPerformed(evt);
+            }
+        });
+        add(checkbutton);
+        checkbutton.setBounds(30, 180, 150, 30);
+
+        instructionbutton.setBackground(new java.awt.Color(255, 255, 255));
+        instructionbutton.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        instructionbutton.setForeground(new java.awt.Color(102, 0, 0));
+        instructionbutton.setText("Instructions");
+        instructionbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                instructionbuttonActionPerformed(evt);
+            }
+        });
+        add(instructionbutton);
+        instructionbutton.setBounds(30, 370, 150, 31);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/level4back.jpg"))); // NOI18N
+        add(jLabel1);
+        jLabel1.setBounds(0, 0, 820, 620);
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void resetbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetbuttonActionPerformed
+        int a=JOptionPane.showConfirmDialog(resetbutton,"This will restart this puzzle\nAre you sure to continue?");
+        if(a==JOptionPane.YES_OPTION)
+        {
+            resetpuzzle();
+        }          // TODO add your handling code here:
+    }//GEN-LAST:event_resetbuttonActionPerformed
+
+    private void checkbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkbuttonActionPerformed
+        wincheck();
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkbuttonActionPerformed
+
+    private void instructionbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_instructionbuttonActionPerformed
+        JOptionPane.showMessageDialog(null,"* You have to place 8 queen on the board in such a way that no queen captures and other queen.\n"
+                                            +"* To place/remove a queen, left click on that cell.\n"
+                                            +"* A queen can move(horizontally,vertically,diagonally) any number of cells in one turn.\n"
+                                            +"* After placing all the 8 queens, click on CHECK button to check your solution.\n"
+                                            +"* RESET button will bring the board to its initial state(that is, no queen on the board).\n"
+        );                                  
+        // TODO add your handling code here:
+    }//GEN-LAST:event_instructionbuttonActionPerformed
+    void toggle(int row,int col)
+    {
+        if(board[row][col]==0 && queencount<8)
+        {
+                board[row][col]=1;
+                checker[row][col].setIcon(new javax.swing.ImageIcon(getClass().getResource("/queen.jpg")));
+                queencount++;
+                crosscheck();
+        }
+        else if(board[row][col]==1 || board[row][col]==2)
+        {
+            board[row][col]=0;
+            if((row+col)%2==0) checker[row][col].setIcon(new javax.swing.ImageIcon(getClass().getResource("/boardwhite.jpg")));
+            else checker[row][col].setIcon(new javax.swing.ImageIcon(getClass().getResource("/boardblack.jpg")));
+            queencount--;
+            crosscheck();
+        }
+    }
+    
+    public void actionPerformed(ActionEvent evt)
+    {
+        queenbutton qbut=(queenbutton)evt.getSource();
+        toggle(qbut.getrow(),qbut.getcol());
+        
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel boardoutlineimagelabel;
+    public javax.swing.JPanel boardpanel;
+    public javax.swing.JPanel cellpanel;
+    private javax.swing.JButton checkbutton;
+    public static javax.swing.JLabel eightqueenlabel;
+    private javax.swing.JButton instructionbutton;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton resetbutton;
+    // End of variables declaration//GEN-END:variables
+}
