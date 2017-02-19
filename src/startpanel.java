@@ -114,6 +114,7 @@ public class startpanel extends javax.swing.JFrame implements Runnable{
         cardpanel.add(new finishpanel(),"finishpanel");
         puzzleorder[orderindex++]=6; 
         puzzleorder[orderindex++]=7; 
+	
         cardpanel.setBounds(0, 40, 820, 620);
         add(cardpanel);
     }
@@ -362,6 +363,7 @@ public class startpanel extends javax.swing.JFrame implements Runnable{
         colorpuzzlepanel1.setBounds(20, 240, 0, 0);
 
         pack();
+	setResizable(true);
     }// </editor-fold>//GEN-END:initComponents
 
     private void nextbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextbuttonActionPerformed

@@ -59,13 +59,6 @@ public class finishpanel extends javax.swing.JPanel {
         add(thankyou1label);
         thankyou1label.setBounds(140, 70, 540, 80);
 
-        developerpanel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        developerpanel.setForeground(new java.awt.Color(255, 255, 255));
-        developerpanel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        developerpanel.setText("Deepak Meena - 14540");
-        add(developerpanel);
-        developerpanel.setBounds(460, 560, 300, 40);
-
         developerpanel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         developerpanel1.setForeground(new java.awt.Color(255, 255, 255));
         developerpanel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -73,33 +66,15 @@ public class finishpanel extends javax.swing.JPanel {
         add(developerpanel1);
         developerpanel1.setBounds(370, 360, 220, 40);
 
-        developerpanel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        developerpanel2.setForeground(new java.awt.Color(255, 255, 255));
-        developerpanel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        developerpanel2.setText("Deepika Guleria - 14536");
-        add(developerpanel2);
-        developerpanel2.setBounds(460, 400, 300, 40);
-
-        developerpanel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        developerpanel3.setForeground(new java.awt.Color(255, 255, 255));
-        developerpanel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        developerpanel3.setText("Ali Anwar - 14537");
-        add(developerpanel3);
-        developerpanel3.setBounds(460, 440, 300, 40);
-
+        
         developerpanel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         developerpanel4.setForeground(new java.awt.Color(255, 255, 255));
         developerpanel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        developerpanel4.setText("Gurpreet Singh - 14538");
+        developerpanel4.setText("Gurpreet Singh");
         add(developerpanel4);
         developerpanel4.setBounds(460, 480, 300, 40);
 
-        developerpanel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        developerpanel5.setForeground(new java.awt.Color(255, 255, 255));
-        developerpanel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        developerpanel5.setText("Rahul Bihan - 14539");
-        add(developerpanel5);
-        developerpanel5.setBounds(460, 520, 300, 40);
+        
 
         imagelabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/finishback.jpg"))); // NOI18N
         add(imagelabel);
